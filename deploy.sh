@@ -6,9 +6,9 @@
 #################################################################
 
 # SSL certificate
-USE_SSL=true
-CERT_PATH='/opt/cert/fullchain.pem'
-PKEY_PATH='/opt/cert/privkey.pem'
+USE_SSL=false
+CERT_PATH=''
+PKEY_PATH=''
 # Stun settings
 STUN_IP='stun.l.google.com'
 STUN_PORT=19302
@@ -28,7 +28,7 @@ TOKEN=''
 # Janus branch to fetch
 JANUS_BRANCH='multistream' # 'master' by default
 # Load balancer
-LOAD_BALANCER_URL='http://jlb.lesson365.io:8897'
+LOAD_BALANCER_URL=''
 
 ############################################################
 # Install dependencies
@@ -186,6 +186,7 @@ rm /opt/janus/etc/janus/*.bak
 # Start Janus service
 systemctl daemon-reload
 systemctl enable janus
+service janus stop
 service janus start
 
 # Install balancer's responder
